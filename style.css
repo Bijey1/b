@@ -2,10 +2,10 @@
   margin: 0;
   height: 100vh;
   background-image: url('bday.png');
-  background-repeat: no-repeat;
+  background-repeat: repeat;
   background-size: cover;
   /* shift 20px left from center */
-  background-position: calc(50% - 30px) center; 
+  background-position: calc(50% - 5px) center; 
 }
 .candle-count-display {
 
