@@ -8,8 +8,8 @@ document.addEventListener("DOMContentLoaded", function () {
   let listening = false; // mic state
 
   const topLayer = document.querySelector(".top-layer-click-area");
-  let les = [33.8, 63.8, 88.8, 115.8, 141.8, 162.8, 184.8, 203.8,97,135];
-  let to = [3.57498, 8.57498, 15.575, 17.575, 15.575, 13.575, 8.57498, 6.57498,-70,-70];
+  let les = [33.8, 63.8, 88.8, 115.8, 141.8, 162.8, 184.8, 203.8, 97, 135];
+  let to = [3.57498, 8.57498, 15.575, 17.575, 15.575, 13.575, 8.57498, 6.57498, -70, -70];
 
   function can() {
     for (let i = 0; i < les.length; i++) {
@@ -50,7 +50,8 @@ document.addEventListener("DOMContentLoaded", function () {
     }
     let average = sum / bufferLength;
 
-    return average > 40; // sensitivity threshold
+    console.log("Mic average:", average); // debug log
+    return average > 25; // lowered threshold for mobile
   }
 
   function blowOutCandles() {
@@ -69,6 +70,11 @@ document.addEventListener("DOMContentLoaded", function () {
       try {
         stream = await navigator.mediaDevices.getUserMedia({ audio: true });
         audioContext = new (window.AudioContext || window.webkitAudioContext)();
+
+        if (audioContext.state === "suspended") {
+          await audioContext.resume(); // mobile fix
+        }
+
         analyser = audioContext.createAnalyser();
         microphone = audioContext.createMediaStreamSource(stream);
         microphone.connect(analyser);
@@ -77,11 +83,14 @@ document.addEventListener("DOMContentLoaded", function () {
       } catch (err) {
         console.log("Unable to access microphone:", err);
       }
+    } else if (audioContext.state === "suspended") {
+      await audioContext.resume(); // resume if paused
     }
   }
 
   // push-to-talk mic button
   const micButton = document.getElementById("micButton");
+  let m = document.getElementById("m");
 
   function pressDown() {
     micButton.classList.add("pressed");
@@ -92,23 +101,25 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   // Desktop
-  let m=document.getElementById("m")
   micButton.addEventListener("mousedown", async () => {
     pressDown();
     await initMic();
     listening = true;
     console.log("🎤 Mic ON");
+    m.textContent = "ON";
   });
 
   micButton.addEventListener("mouseup", () => {
     release();
     listening = false;
     console.log("🎤 Mic OFF");
+    m.textContent = "OFF";
   });
 
   micButton.addEventListener("mouseleave", () => {
     release();
     listening = false;
+    m.textContent = "OFF";
   });
 
   // Mobile
@@ -118,14 +129,14 @@ document.addEventListener("DOMContentLoaded", function () {
     await initMic();
     listening = true;
     console.log("🎤 Mic ON (touch)");
-    m.textContent="ONN"
+    m.textContent = "ON";
   });
 
   micButton.addEventListener("touchend", () => {
     release();
     listening = false;
     console.log("🎤 Mic OFF (touch)");
-     m.textContent="OFF"
+    m.textContent = "OFF";
   });
 
   // spawn candles + snow
