@@ -85,3 +85,38 @@ const topLayer = document.querySelector(".top-layer-click-area");
     console.log("getUserMedia not supported on your browser!");
   }
 });
+
+
+
+//RANDOM DROPS
+ const snowContent = ["&#128218", "&#9999", "&#128214"];
+      const random = (num) => {
+        return Math.floor(Math.random() * num);
+      };
+
+      const getRandomStyles = () => {
+        const top = random(100);
+        const left = random(100);
+        const dur = random(10) + 8;
+        const size = random(25) + 25;
+        return ` 
+        top: -${top}%; 
+        left: ${left}%; 
+        font-size: ${size}px; 
+        animation-duration: ${dur}s; `;
+      };
+
+      const createSnow = (num) => {
+        const snowContainer = document.getElementById("snow-container"); // Reference the snow-container
+        for (let i = 0; i < num; i++) {
+          let snow = document.createElement("div");
+          snow.className = "snow";
+          snow.style.cssText = getRandomStyles();
+          snow.innerHTML = snowContent[random(3)]; // Randomly select snowflakes
+          snowContainer.appendChild(snow);
+        }
+      };
+
+/* window.addEventListener("load", () => {
+        createSnow(25); // Create 30 snowflakes
+      });*/

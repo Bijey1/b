@@ -1,12 +1,82 @@
+  
+  
   body {
   margin: 0;
   height: 100vh;
-  background-image: url('bday.png');
+  background-image: url('bdayvec.svg');
   background-repeat: repeat;
   background-size: cover;
   /* shift 20px left from center */
-  background-position: calc(50% - 5px) center; 
+  background-position: calc(50% - 20px) center; 
 }
+/*
+ #snow-container {
+        height: 100vh;
+        overflow: hidden;
+        position: absolute;
+        top: 0;
+        transition: opacity 500ms;
+        width: 100%;
+      }
+        .snow {
+        animation: fall ease-in infinite, sway ease-in-out infinite,
+          rotate ease-in-out infinite;
+        color: skyblue;
+        position: absolute;
+      }
+       @keyframes fall {
+        0% {
+          opacity: 0;
+        }
+
+        50% {
+          opacity: 1;
+        }
+
+        100% {
+          top: 100vh;
+          opacity: 1;
+        }
+      }
+
+      @keyframes sway {
+        0% {
+          margin-left: 0;
+        }
+
+        25% {
+          margin-left: 50px;
+        }
+
+        50% {
+          margin-left: -50px;
+        }
+
+        75% {
+          margin-left: 50px;
+        }
+
+        100% {
+          margin-left: 0;
+        }
+      }
+
+      @keyframes rotate {
+        0% {
+          transform: rotate(0deg) scale(1);
+          opacity: 0;
+        }
+
+        50% {
+          opacity: 1;
+        }
+
+        100% {
+          transform: rotate(360deg) scale(1.2);
+          opacity: 0.9;
+        }
+      }
+        */
 .candle-count-display {
 
   text-align: center;
@@ -32,19 +102,20 @@
 
 .cake {
   position: absolute;
-  width: 250px;
+  width: 230px;
   height: 200px;
   top: 67%;
   left: 45%;
   margin-top: -70px;
   margin-left: -125px;
+  /*border: solid yellow;*/
 }
 
 .plate {
-  width: 270px;
-  height: 110px;
+  width: 250px;
+  height: 90px;
   position: absolute;
-  bottom: -10px;
+  bottom: -2px;
   left: -10px;
   background-color: #ccc;
   border-radius: 50%;
@@ -58,8 +129,8 @@
 .layer {
   position: absolute;
   display: block;
-  width: 250px;
-  height: 100px;
+  width: 230px;
+  height: 80px;
   border-radius: 50%;
   background-color: #553c13;
   box-shadow: 0 2px 0px #6a4b18, 0 4px 0px #33240b, 0 6px 0px #32230b, 0 8px 0px #31230b, 0 10px 0px #30220b, 0 12px 0px #2f220b, 0 14px 0px #2f210a, 0 16px 0px #2e200a, 0 18px 0px #2d200a, 0 20px 0px #2c1f0a, 0 22px 0px #2b1f0a, 0 24px 0px #2a1e09, 0 26px 0px #2a1d09, 0 28px 0px #291d09, 0 30px 0px #281c09;
@@ -81,8 +152,8 @@
   top: 2px;
   left: 5px;
   background-color: #f0e4d0;
-  width: 240px;
-  height: 90px;
+  width: 220px;
+  height: 70px;
   border-radius: 50%;
 }
 .icing:before {
@@ -100,23 +171,23 @@
 
 .drip {
  display: block;
-  width: 50px;
-  height: 60px;
+  width: 30px;
+  height: 40px;
   border-bottom-left-radius: 25px;
   border-bottom-right-radius: 25px;
   background-color: #f0e4d0; 
 }
 
 .drip1 {
-  top: 53px;
+  top: 40px;
   left: 5px;
   transform: skewY(15deg);
-  height: 48px;
-  width: 40px;
+  height: 28px;
+  width: 20px;
 }
 
 .drip2 {
-  top: 69px;
+  top: 49px;
   left: 181px;
   transform: skewY(-15deg);
 }
@@ -135,10 +206,21 @@
   width: 100%;
   height: 60px; /* only top 100px for candle placement */
   cursor: pointer; /* optional */
-  z-index: 10;
+  z-index: 19;
+  
+}
+.num{
+
+  position: absolute;
+  top: -50px;
+  left: 69px;
+  z-index: 9;
+  cursor: pointer; /* optional */
+  pointer-events: none;
   
 }
 .candle {
+  position: absolute;
   background-color: #7B020B;
   width: 12px;
   height: 35px;
