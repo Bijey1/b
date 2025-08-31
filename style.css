@@ -1,15 +1,32 @@
   
   
-  body {
-  margin: 0;
-  height: 100vh;
-  background-image: url('bdayvec.svg');
-  background-repeat: repeat;
-  background-size: cover;
-  /* shift 20px left from center */
-  background-position: calc(50% - 20px) center; 
+ html, body {
+      margin: 0;
+      height: 100%;
+      overflow: hidden; /* disables scrolling */
+    }
+
+    body {
+      background-image: url('bdayvec.svg');
+      background-repeat: repeat;
+      background-size: cover;
+      background-position: calc(50% - 10px) center; /* shift 20px left */
+    }
+.candle-count-display {
+  
+
+  font-family: 'Arial', sans-serif;
+  font-size: 20px;
+  color: #6A4B18;
+  background-color: #F0E4D0;
+  padding: 10px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  
+  margin-left: auto;
+  margin-right: auto;
+  border: 2px solid #553C13;
 }
-/*
  #snow-container {
         height: 100vh;
         overflow: hidden;
@@ -76,23 +93,40 @@
           opacity: 0.9;
         }
       }
-        */
+        
 .candle-count-display {
-
+ position: absolute;
+    top: 69%;
+  left: 20%;
   text-align: center;
   margin-top: 150px;
   margin-bottom: 20px;
   font-family: 'Arial', sans-serif;
-  font-size: 20px;
+  font-size: 23px;
   color: #6A4B18;
   background-color: #F0E4D0;
   padding: 10px;
   border-radius: 10px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+ box-shadow: 0 4px #45310f;
   width: fit-content;
   margin-left: auto;
   margin-right: auto;
+  height:70px;
+  width:240px;
   border: 2px solid #553C13;
+  transition: all 0.1s ease;
+  
+}
+
+.candle-count-display:active {
+  transform: translateY(3px);  /* push down */
+  box-shadow: 0 2px #33240b;   /* shadow gets smaller */
+}
+.candle-count-display i {
+  margin-right: 10px; /* adjust the spacing */
+}
+.candle-count-display.pressed {
+  transform: translateY(2px); /* Looks like button is pressed */
 }
 
 .candle-count-display span {
@@ -102,12 +136,13 @@
 
 .cake {
   position: absolute;
+    top: 67%;
+  left: 50%;
   width: 230px;
   height: 200px;
-  top: 67%;
-  left: 45%;
   margin-top: -70px;
   margin-left: -125px;
+
   /*border: solid yellow;*/
 }
 

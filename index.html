@@ -3,14 +3,18 @@
   <head>
     <meta charset="UTF-8" />
     <title>Candle Blow</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css"
     />
     <link rel="stylesheet" href="./style.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/prefixfree/1.0.7/prefixfree.min.js"></script>
   </head>
+  
   <body>
     <div id="snow-container"></div>
     
@@ -26,20 +30,12 @@
       <div class="drip drip2"></div>
       <div class="drip drip3"></div>
       <div class="top-layer-click-area"><img class="num" width="90" src="19V.svg"> </div>
-      <div class="candle" style="left: 65.825px; top: 12.2875px;"><div class="flame"></div>  
-      <div class="candle" style="left: 33.825px; top: 13.2875px;"><div class="flame"></div>
-      <div class="candle" style="left: 196.825px; top: 17.2875px;"><div class="flame"></div>
-      <div class="candle" style="left: 116.825px; top: 19.2875px;"><div class="flame"></div>
-      <div class="candle" style="left: 142.825px; top: 22.2875px;"><div class="flame"></div>
-      <div class="candle" style="left: 88.825px; top: 21.2875px;"><div class="flame"></div>
-      <div class="candle" style="left: 178.825px; top: 4.28749px;"><div class="flame"></div>
-      <div class="candle" style="left: 76.825px; top: 2.28749px;"><div class="flame"></div>
-      <div class="candle" style="left: 209.825px; top: 13.2875px;"><div class="flame"></div>
-      <div class="candle" style="left: 44.825px; top: 6.28749px;"><div class="flame"></div>
-    
-    
-    
+
     </div>
+<button  id="micButton" class="candle-count-display"  >
+  <i class="fas fa-microphone"></i> 
+  Blow the Candle
+</button>
     <script src="script.js"></script>
   </body>
 </html>
