@@ -96,8 +96,8 @@
         
 .candle-count-display {
  position: absolute;
-    top: 69%;
-  left: 20%;
+    bottom: -60%;
+ 
   text-align: center;
   margin-top: 150px;
   margin-bottom: 20px;
@@ -126,7 +126,7 @@
   margin-right: 10px; /* adjust the spacing */
 }
 .candle-count-display.pressed {
-  transform: translateY(2px); /* Looks like button is pressed */
+  transform: translateY(3px); /* Looks like button is pressed */
 }
 
 .candle-count-display span {
@@ -136,12 +136,13 @@
 
 .cake {
   position: absolute;
-    top: 67%;
+  top: 67%;
   left: 50%;
   width: 230px;
   height: 200px;
   margin-top: -70px;
   margin-left: -125px;
+
 
   /*border: solid yellow;*/
 }
