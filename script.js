@@ -92,6 +92,7 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   // Desktop
+  let m=document.getElementById("m")
   micButton.addEventListener("mousedown", async () => {
     pressDown();
     await initMic();
@@ -117,12 +118,14 @@ document.addEventListener("DOMContentLoaded", function () {
     await initMic();
     listening = true;
     console.log("🎤 Mic ON (touch)");
+    m.textContent="ONN"
   });
 
   micButton.addEventListener("touchend", () => {
     release();
     listening = false;
     console.log("🎤 Mic OFF (touch)");
+     m.textContent="OFF"
   });
 
   // spawn candles + snow

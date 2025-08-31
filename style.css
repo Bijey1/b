@@ -12,21 +12,7 @@
       background-size: cover;
       background-position: calc(50% - 10px) center; /* shift 20px left */
     }
-.candle-count-display {
-  
 
-  font-family: 'Arial', sans-serif;
-  font-size: 20px;
-  color: #6A4B18;
-  background-color: #F0E4D0;
-  padding: 10px;
-  border-radius: 10px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-  
-  margin-left: auto;
-  margin-right: auto;
-  border: 2px solid #553C13;
-}
  #snow-container {
         height: 100vh;
         overflow: hidden;
@@ -96,7 +82,8 @@
         
 .candle-count-display {
  position: absolute;
-    bottom: -60%;
+    top:67%;
+    left:20%;
  
   text-align: center;
   margin-top: 150px;
@@ -133,7 +120,21 @@
   font-weight: bold;
   color: #AD030F;
 }
+.candle-count-display {
+  
 
+  font-family: 'Arial', sans-serif;
+  font-size: 20px;
+  color: #6A4B18;
+  background-color: #F0E4D0;
+  padding: 10px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  
+  margin-left: auto;
+  margin-right: auto;
+  border: 2px solid #553C13;
+}
 .cake {
   position: absolute;
   top: 67%;
