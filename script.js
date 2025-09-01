@@ -260,7 +260,10 @@ setInterval(function () {
 
     // 5️⃣ Move to next GIF
     index++;
-    if (index >= gifs1.length) index = 0; // loop back to start start
+     if (index >= gifs1.length) {
+    clearInterval(danceInterval); // stops the setInterval
+    console.log("Dance interval ended");
+  } // loop back to start start
   }, 8500); // switch every 6.5 seconds
 },6500);
   
