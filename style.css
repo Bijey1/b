@@ -10,6 +10,12 @@ position: absolute;
 z-index: 0;
 }
     
+#micButton i {
+    line-height: 1;
+      vertical-align: middle;
+      }
+
+
 
  #snow-container {
         height: 100vh;
