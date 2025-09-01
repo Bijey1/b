@@ -165,7 +165,7 @@ async function play() {
      setTimeout(function(){
         cake.classList.add("show-cake")
         dance2.remove();
-         dance.remove();
+         dance.remove();s
 
 
         setTimeout(function(){
@@ -271,7 +271,7 @@ const createSnow = (num) => {
     snowContainer.appendChild(snow);
   }
 };
-
+/*
 let containerR=document.querySelector(".containerR")
 let cover=document.querySelector(".cover")
 document.querySelector(".gift").addEventListener("click", function () {
@@ -284,3 +284,4 @@ cover.classList.add("open");
 
 });
 
+*/
