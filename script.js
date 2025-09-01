@@ -1,5 +1,5 @@
 document.addEventListener("DOMContentLoaded", function () {
-  const cake = document.querySelector(".cake");
+  let cake = document.querySelector(".cake");
   let candles = [];
   let audioContext;
   let analyser;
@@ -140,8 +140,8 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 
   // spawn candles + snow
-  can();
-  createSnow(25);
+  can();//MAKE THE CANDELS IN THE CAKE
+  
 });
 
 // RANDOM DROPS
@@ -178,3 +178,90 @@ const createSnow = (num) => {
     snowContainer.appendChild(snow);
   }
 };
+
+
+let dark=document.querySelector(".dark");
+let light=document.querySelector(".container")
+  let cake = document.querySelector(".cake");
+  let micButton = document.getElementById("micButton");
+function play() {
+  light.remove();
+ // dark.remove();
+
+  createSnow(25);
+  
+  setTimeout(function () {
+  
+   dances();
+
+    //SHOW CAKE
+     setTimeout(function(){
+        cake.classList.add("show-cake")
+
+        setTimeout(function(){
+            micButton.classList.add("show-but")
+        },18000)//18 secs
+
+    },67500); //1minute and 9sec
+
+  
+    var audio = new Audio("songCut.mp3");
+  audio.play();
+  console.log("This runs after 2 seconds");
+}, 500); 
+ 
+};
+
+let dance=document.querySelector(".dance")
+let dance2=document.querySelector(".dance2")
+
+function dances() {
+  // add animation classes first
+ 
+
+  // array of GIFs
+  const gifs1 = [ "cat/dance2.gif", "cat/dance3.gif", "cat/d1.gif","cat/dance4.gif","cat/dance5.gif","cat/dance6.gif"];
+  const gifs2 = ["cat/dance2.gif", "cat/dance3.gif", "cat/d1.gif","cat/dance4.gif","cat/dance5.gif","cat/dance6.gif"];
+  let index = 0;
+setTimeout(function(){
+   dance.classList.add("hide-catL");
+  dance2.classList.add("hide-catR");
+
+setTimeout(function(){
+    dance.classList.add("outL");
+  dance2.classList.add("outR");
+  },7500)
+
+
+setInterval(function () {
+
+  setTimeout(function(){
+    dance.classList.add("outL");
+  dance2.classList.add("outR");
+  },7500)
+
+   // 1️⃣ Remove previous animation so new GIF can play with animation
+    dance.classList.remove("hide-catL");
+    dance2.classList.remove("hide-catR");
+        dance.classList.remove("outL");
+    dance2.classList.remove("outR");
+
+    // 2️⃣ Swap GIFs
+    dance.src = gifs1[index];
+    dance2.src = gifs2[index];
+
+    // 3️⃣ Force reflow so animation restarts
+    void dance.offsetWidth;
+    void dance2.offsetWidth;
+
+    // 4️⃣ Re-add the animation class so the GIF enters/plays
+    dance.classList.add("hide-catL");
+    dance2.classList.add("hide-catR");
+
+    // 5️⃣ Move to next GIF
+    index++;
+    if (index >= gifs1.length) index = 0; // loop back to start start
+  }, 8500); // switch every 6.5 seconds
+},6500);
+  
+}

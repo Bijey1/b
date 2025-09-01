@@ -5,13 +5,11 @@
       height: 100%;
       overflow: hidden; /* disables scrolling */
     }
-
-    body {
-      background-image: url('bdayvec.svg');
-      background-repeat: repeat;
-      background-size: cover;
-      background-position: calc(50% - 10px) center; /* shift 20px left */
-    }
+.imgBack{
+position: absolute;
+z-index: 0;
+}
+    
 
  #snow-container {
         height: 100vh;
@@ -20,6 +18,7 @@
         top: 0;
         transition: opacity 500ms;
         width: 100%;
+       
       }
         .snow {
         animation: fall ease-in infinite, sway ease-in-out infinite,
@@ -81,10 +80,11 @@
       }
         
 .candle-count-display {
+  pointer-events: none;
  position: absolute;
-    top:67%;
+    top:66%;
     left:20%;
- 
+ opacity: 0;
   text-align: center;
   margin-top: 150px;
   margin-bottom: 20px;
@@ -99,12 +99,16 @@
   margin-left: auto;
   margin-right: auto;
   height:70px;
-  width:240px;
+  width:230px;
   border: 2px solid #553C13;
   transition: all 0.1s ease;
   
 }
-
+#m{
+  position: absolute;
+  top:0;
+   z-index: 1;
+}
 .candle-count-display:active {
   transform: translateY(3px);  /* push down */
   box-shadow: 0 2px #33240b;   /* shadow gets smaller */
@@ -124,7 +128,8 @@
   
 
   font-family: 'Arial', sans-serif;
-  font-size: 20px;
+  font-size: 23px;
+  font-weight: bold;
   color: #6A4B18;
   background-color: #F0E4D0;
   padding: 10px;
@@ -136,6 +141,7 @@
   border: 2px solid #553C13;
 }
 .cake {
+  opacity: 0;
   position: absolute;
   top: 67%;
   left: 50%;
@@ -152,7 +158,7 @@
   width: 250px;
   height: 90px;
   position: absolute;
-  bottom: -2px;
+  bottom: 10px;
   left: -10px;
   background-color: #ccc;
   border-radius: 50%;
@@ -284,7 +290,7 @@
 
 .flame {
   position: absolute;
-  background-color: orange;
+  background-color: rgb(180, 120, 30);
   width: 10px;
   height: 25px;
   border-radius: 8px 8px 8px 8px/20px 20px 8px 8px;
@@ -317,5 +323,151 @@
   100% {
     transform: skewX(5deg);
     box-shadow: 0 0 10px rgba(255, 165, 0, 0.5), 0 0 20px rgba(255, 165, 0, 0.5), 0 0 60px rgba(255, 165, 0, 0.5), 0 0 80px rgba(255, 165, 0, 0.5);
+  }
+}
+
+
+/*Light Switch */
+.container input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  height: 0;
+  width: 0;
+}
+
+.container {
+  display: block;
+  position: relative;
+  cursor: pointer;
+  font-size: 13px;
+  user-select: none;
+  z-index: 20;
+  top:10vh;
+  left:80vw;
+}
+
+/* Create a custom checkbox */
+.checkmark {
+  position: relative;
+  top: 0;
+  left: 0;
+  height: 6em;
+  width: 3em;
+  background-color: #ccc;
+}
+
+.switch {
+  position: relative;
+  height: 5.4em;
+  width: 2.4em;
+  top: .3em;
+  left: .3em;
+  background-color: white;
+  box-shadow: rgba(0, 0, 0, 0.4) 0px 10px 2px, rgba(0, 0, 0, 0.3) 0px 0px 0px -3px, rgba(0, 0, 0, 0.2) 0px -8px 0px inset;
+}
+
+.container input:checked ~ .checkmark .switch {
+  box-shadow: rgba(0, 0, 0, 0.4) 0px 0px 2px, rgba(0, 0, 0, 0.3) 0px 0px 0px -3px, rgba(0, 0, 0, 0.2) 0px -6px 0px inset;
+  transform: rotateX(180deg);
+}
+
+.dark{
+  position: absolute;
+  z-index: 20;
+}
+
+.show-cake {
+  opacity: 1;
+  animation: showUp 2s ease forwards; /* animate upwards */
+}
+
+@keyframes showUp {
+  from {
+    transform: translateY(100vh); /* way below the screen */
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);     /* in its normal place */
+    opacity: 1;
+  }
+}
+
+.show-but{
+   pointer-events: auto;
+  opacity: 1;
+animation: mic 3s ease;
+}
+@keyframes mic {
+  from{
+    opacity: 0;
+  }
+  to{
+ opacity: 1;
+  }
+  
+}
+.dance,
+.dance2{
+  opacity: 0;
+  position: absolute;
+  z-index: 12;
+  top:55%;
+}
+.dance{
+  left:5%;
+}
+.dance2{
+  right:5%;
+}
+.hide-catL{
+  opacity: 1;
+animation: left 1s ease;
+}
+@keyframes left {
+  from {
+    transform: translateX(-100vw); /* way below the screen */
+  }
+  to {
+    transform: translateX(0);     /* in its normal place */
+    opacity: 1;
+  }
+}
+.hide-catR{
+  opacity: 1;
+  animation: right 1s ease;
+}
+@keyframes right {
+  from {
+    transform: translateX(100vw); /* way below the screen */
+  }
+  to {
+    transform: translateX(0);     /* in its normal place */
+    opacity: 1;
+  }
+}
+
+.outL{
+  animation: left-out 1s ease;
+}
+@keyframes left-out {
+  to {
+    transform: translateX(-100vw); /* way below the screen */
+  }
+  from {
+    transform: translateX(0);     /* in its normal place */
+    opacity: 1;
+  }
+}
+.outR{
+  animation: right-out 1s ease;
+}
+@keyframes right-out {
+   to {
+    transform: translateX(100vw); /* way below the screen */
+  }
+  from {
+    transform: translateX(0);     /* in its normal place */
+    opacity: 1;
   }
 }
