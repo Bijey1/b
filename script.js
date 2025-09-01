@@ -1,4 +1,5 @@
 document.addEventListener("DOMContentLoaded", function () {
+  window.play = play;
   let cake = document.querySelector(".cake");
   let candles = [];
   let audioContext;
@@ -53,6 +54,7 @@ document.addEventListener("DOMContentLoaded", function () {
     console.log("Mic average:", average); // debug log
     return average > 25; // lowered threshold for mobile
   }
+  
 
   function blowOutCandles() {
     if (isBlowing()) {
@@ -103,7 +105,7 @@ document.addEventListener("DOMContentLoaded", function () {
   // Desktop
   micButton.addEventListener("mousedown", async () => {
     pressDown();
-    await initMic();
+    
     listening = true;
     console.log("🎤 Mic ON");
     m.textContent = "ON";
@@ -142,6 +144,97 @@ document.addEventListener("DOMContentLoaded", function () {
   // spawn candles + snow
   can();//MAKE THE CANDELS IN THE CAKE
   
+let dark=document.querySelector(".dark");
+let light=document.querySelector(".containerL")
+
+  let dance=document.querySelector(".dance")
+let dance2=document.querySelector(".dance2")
+//PRESSED THE LIGHT
+async function play() {
+  await initMic();
+  light.remove();
+  dark.remove();
+
+  createSnow(25);
+  
+  setTimeout(function () {
+  
+   dances();
+
+    //SHOW CAKE
+     setTimeout(function(){
+        cake.classList.add("show-cake")
+        dance2.remove();
+         dance.remove();
+
+
+        setTimeout(function(){
+            micButton.classList.add("show-but")
+        },18000)//18 secs
+
+    },67500); //1minute and 9sec
+
+  
+    var audio = new Audio("songCut.mp3");
+  audio.play();
+  console.log("This runs after 2 seconds");
+}, 500); 
+ 
+};
+
+
+function dances() {
+  const gifs1 = ["cat/dance2.gif", "cat/dance3.gif", "cat/d1.gif", "cat/dance4.gif", "cat/dance5.gif", "cat/dance6.gif"];
+  const gifs2 = ["cat/dance2.gif", "cat/dance3.gif", "cat/d1.gif", "cat/dance4.gif", "cat/dance5.gif", "cat/dance6.gif"];
+  let index = 0;
+
+  setTimeout(function () {
+    dance.classList.add("hide-catL");
+    dance2.classList.add("hide-catR");
+
+    setTimeout(function () {
+      dance.classList.add("outL");
+      dance2.classList.add("outR");
+    }, 7500);
+
+    // 🔹 Store interval in a variable
+    let danceInterval = setInterval(function () {
+      setTimeout(function () {
+        dance.classList.add("outL");
+        dance2.classList.add("outR");
+      }, 7500);
+
+      // Reset classes
+      dance.classList.remove("hide-catL");
+      dance2.classList.remove("hide-catR");
+      dance.classList.remove("outL");
+      dance2.classList.remove("outR");
+
+      // Swap GIFs
+      dance.src = gifs1[index];
+      dance2.src = gifs2[index];
+
+      // Restart animation
+      void dance.offsetWidth;
+      void dance2.offsetWidth;
+
+      dance.classList.add("hide-catL");
+      dance2.classList.add("hide-catR");
+
+      index++;
+
+      // 🔹 Stop interval after last gif
+      if (index > gifs1.length) {
+        dance2.remove();
+         dance.remove();
+        clearInterval(danceInterval);
+        console.log("Dance interval ended");
+      }
+    }, 8500);
+  }, 6500);
+}
+
+
 });
 
 // RANDOM DROPS
@@ -179,92 +272,15 @@ const createSnow = (num) => {
   }
 };
 
+let containerR=document.querySelector(".containerR")
+let cover=document.querySelector(".cover")
+document.querySelector(".gift").addEventListener("click", function () {
 
-let dark=document.querySelector(".dark");
-let light=document.querySelector(".container")
-  let cake = document.querySelector(".cake");
-  let micButton = document.getElementById("micButton");
-function play() {
-  light.remove();
- // dark.remove();
-
-  createSnow(25);
-  
-  setTimeout(function () {
-  
-   dances();
-
-    //SHOW CAKE
-     setTimeout(function(){
-        cake.classList.add("show-cake")
-
-        setTimeout(function(){
-            micButton.classList.add("show-but")
-        },18000)//18 secs
-
-    },67500); //1minute and 9sec
-
-  
-    var audio = new Audio("songCut.mp3");
-  audio.play();
-  console.log("This runs after 2 seconds");
-}, 500); 
- 
-};
-
-let dance=document.querySelector(".dance")
-let dance2=document.querySelector(".dance2")
-
-function dances() {
-  // add animation classes first
- 
-
-  // array of GIFs
-  const gifs1 = [ "cat/dance2.gif", "cat/dance3.gif", "cat/d1.gif","cat/dance4.gif","cat/dance5.gif","cat/dance6.gif"];
-  const gifs2 = ["cat/dance2.gif", "cat/dance3.gif", "cat/d1.gif","cat/dance4.gif","cat/dance5.gif","cat/dance6.gif"];
-  let index = 0;
+cover.classList.add("open");
 setTimeout(function(){
-   dance.classList.add("hide-catL");
-  dance2.classList.add("hide-catR");
+containerR.classList.add("gr");
+},500) 
+cover.classList.add("open");
 
-setTimeout(function(){
-    dance.classList.add("outL");
-  dance2.classList.add("outR");
-  },7500)
+});
 
-
-setInterval(function () {
-
-  setTimeout(function(){
-    dance.classList.add("outL");
-  dance2.classList.add("outR");
-  },7500)
-
-   // 1️⃣ Remove previous animation so new GIF can play with animation
-    dance.classList.remove("hide-catL");
-    dance2.classList.remove("hide-catR");
-        dance.classList.remove("outL");
-    dance2.classList.remove("outR");
-
-    // 2️⃣ Swap GIFs
-    dance.src = gifs1[index];
-    dance2.src = gifs2[index];
-
-    // 3️⃣ Force reflow so animation restarts
-    void dance.offsetWidth;
-    void dance2.offsetWidth;
-
-    // 4️⃣ Re-add the animation class so the GIF enters/plays
-    dance.classList.add("hide-catL");
-    dance2.classList.add("hide-catR");
-
-    // 5️⃣ Move to next GIF
-    index++;
-     if (index >= gifs1.length) {
-    clearInterval(danceInterval); // stops the setInterval
-    console.log("Dance interval ended");
-  } // loop back to start start
-  }, 8500); // switch every 6.5 seconds
-},6500);
-  
-}
