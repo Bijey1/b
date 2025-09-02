@@ -154,12 +154,7 @@ z-index: 0;
 
   /*border: solid yellow;*/
 }
-#micButton {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 8px; /* space between icon & text */
-}
+
 
 #micButton i {
   display: inline-flex;   /* make icon behave like flex item */
