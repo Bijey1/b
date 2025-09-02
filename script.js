@@ -297,17 +297,52 @@ const createSnow = (num) => {
     snowContainer.appendChild(snow);
   }
 };
-
-let containerR=document.querySelector(".containerR")
-let cover=document.querySelector(".cover")
+let containerR = document.querySelector(".containerR");
+let cover = document.querySelector(".cover");
 
 document.querySelector(".gift").addEventListener("click", function () {
+  cover.style.pointerEvents = "none";
+  cover.classList.add("open");
 
-cover.classList.add("open");
-setTimeout(function(){
-containerR.classList.add("gr");
-},500) 
-cover.classList.add("open");
+  setTimeout(function () {
+    containerR.style.display = "block";
+    containerR.style.pointerEvents = "auto";
+    containerR.classList.add("gr"); // grow animation
 
+    setTimeout(function () {
+      console.log("PWEDE NA CLICK LETTER");
+
+      containerR.addEventListener("click", handleContainerClick, { once: true });
+
+    }, 500);
+
+  }, 500);
 });
 
+function handleContainerClick(event) {
+  event.stopPropagation(); // ⬅️ Stop click from reaching cover
+  
+  containerR.classList.remove("gr");
+
+ 
+  containerR.classList.add("sr");
+
+  // Re-enable cover clicks if needed
+  cover.style.pointerEvents = "auto";
+
+ setTimeout(function () {
+  containerR.style.display = "none";
+
+  containerR.classList.remove("sr");
+  
+  // Start close animation
+  cover.classList.add("close");
+  cover.classList.remove("open");
+
+  // Remove 'close' after animation ends
+  setTimeout(function () {
+    cover.classList.remove("close");
+  }, 2000); // match CSS animation duration
+
+}, 500);
+}
