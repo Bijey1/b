@@ -55,16 +55,37 @@ document.addEventListener("DOMContentLoaded", function () {
     return average > 25; // lowered threshold for mobile
   }
   
+  // push-to-talk mic button
+  const micButton = document.getElementById("micButton");
+function blowOutCandles() {
+  if (isBlowing()) {
+    candles.forEach((candle) => {
+      if (!candle.classList.contains("out") && Math.random() > 0.5) {
+        candle.classList.add("out");
+      }
+    });
 
-  function blowOutCandles() {
-    if (isBlowing()) {
-      candles.forEach((candle) => {
-        if (!candle.classList.contains("out") && Math.random() > 0.5) {
-          candle.classList.add("out");
-        }
-      });
+    // ✅ Check if all candles are blown
+    let allOut = candles.every(candle => candle.classList.contains("out"));
+    if (allOut) {
+       var audio = new Audio("cheer.mp3");
+      audio.play();
+       setTimeout(function(){
+         micButton.classList.add("hide-but");
+      cake.classList.add("moveaS");
+      console.log("🎉 All candles are blown out!");
+      },3000)
+   
+
+      setTimeout(function(){
+        let containerG=document.querySelector(".container")
+        containerG.classList.add("show-gift");
+      },3000)
+      // You can trigger something here, e.g.:
+      // show a message, play an animation, etc.
     }
   }
+}
 
   // mic setup
   async function initMic() {
@@ -90,8 +111,7 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   }
 
-  // push-to-talk mic button
-  const micButton = document.getElementById("micButton");
+
   let m = document.getElementById("m");
 
   function pressDown() {
@@ -108,20 +128,20 @@ document.addEventListener("DOMContentLoaded", function () {
     
     listening = true;
     console.log("🎤 Mic ON");
-    m.textContent = "ON";
+    //m.textContent = "ON";
   });
 
   micButton.addEventListener("mouseup", () => {
     release();
     listening = false;
     console.log("🎤 Mic OFF");
-    m.textContent = "OFF";
+    //m.textContent = "OFF";
   });
 
   micButton.addEventListener("mouseleave", () => {
     release();
     listening = false;
-    m.textContent = "OFF";
+    //m.textContent = "OFF";
   });
 
   // Mobile
@@ -131,14 +151,14 @@ document.addEventListener("DOMContentLoaded", function () {
     await initMic();
     listening = true;
     console.log("🎤 Mic ON (touch)");
-    m.textContent = "ON";
+    //m.textContent = "ON";
   });
 
   micButton.addEventListener("touchend", () => {
     release();
     listening = false;
     console.log("🎤 Mic OFF (touch)");
-    m.textContent = "OFF";
+    //m.textContent = "OFF";
   });
 
   // spawn candles + snow
@@ -165,14 +185,20 @@ async function play() {
      setTimeout(function(){
         cake.classList.add("show-cake")
         dance2.remove();
-         dance.remove();s
+         dance.remove();
 
 
         setTimeout(function(){
             micButton.classList.add("show-but")
-        },18000)//18 secs
+        },
+       //1000 TESTING 
+      18000//18 secs
+      )
 
-    },67500); //1minute and 9sec
+    },
+    // 1000 TESTING
+    67500//1minute and 9sec
+  ); 
 
   
     var audio = new Audio("songCut.mp3");
@@ -271,9 +297,10 @@ const createSnow = (num) => {
     snowContainer.appendChild(snow);
   }
 };
-/*
+
 let containerR=document.querySelector(".containerR")
 let cover=document.querySelector(".cover")
+
 document.querySelector(".gift").addEventListener("click", function () {
 
 cover.classList.add("open");
@@ -284,4 +311,3 @@ cover.classList.add("open");
 
 });
 
-*/

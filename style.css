@@ -81,6 +81,7 @@ z-index: 0;
       }
         
 .candle-count-display {
+  cursor: pointer;
   pointer-events: none;
  position: absolute;
     top:66%;
@@ -155,6 +156,13 @@ z-index: 0;
   /*border: solid yellow;*/
 }
 
+
+#micButton {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px; /* space between icon & text */
+}
 
 #micButton i {
   display: inline-flex;   /* make icon behave like flex item */
@@ -416,6 +424,21 @@ animation: mic 3s ease;
   }
   
 }
+.hide-but{
+  pointer-events: none;
+ opacity: 0;
+animation: micH 3s ease;
+}
+@keyframes micH {
+
+    from{
+    opacity: 1;
+  }
+  to{
+ opacity: 0;
+  }
+}
+
 .dance,
 .dance2{
   opacity: 0;
@@ -435,6 +458,7 @@ animation: left 1s ease;
 }
 @keyframes left {
   from {
+    opacity: 0;
     transform: translateX(-100vw); /* way below the screen */
   }
   to {
@@ -448,6 +472,7 @@ animation: left 1s ease;
 }
 @keyframes right {
   from {
+    opacity: 0;
     transform: translateX(100vw); /* way below the screen */
   }
   to {
@@ -487,10 +512,11 @@ animation: left 1s ease;
   height: auto;
   width: auto;
   left: 50%;
-  top:67%;
+  top:80%;
   cursor: pointer;
   position: absolute;
   opacity: 0;
+  display: none;
 }
 .container * {
   position: absolute;
@@ -533,6 +559,8 @@ animation: left 1s ease;
   transform: translate(-7.5px, -15px);
   border-top: 7px solid #fb8a3a;
   border-radius: 4px 4px 0 0;
+  z-index: 5;
+  position: relative;
 }
 .cover::before {
   border-style: solid;
@@ -573,12 +601,14 @@ animation: left 1s ease;
 .containerR {
  
   position: absolute;
-    top: 50%;
-  left: 10%;
-
+    top: -1500%;
+  left: -60%;
+z-index: 10;
  opacity: 0;
+ display: none;
 }
 .gr{
+  display: block;
    z-index: 15;
   animation: grow 2s ease;
 
@@ -589,12 +619,12 @@ animation: left 1s ease;
   from {
     transform: scale(0);
     opacity: 0; /* starts tiny */
-    transform-origin: center center;
+  
   }
   to {
     transform: scale(1); /* grows to normal size */
     opacity: 1;
-    transform-origin: center center;
+    
   }
   
 }
@@ -602,20 +632,20 @@ animation: left 1s ease;
 .card {
   position: absolute;
   background-color: #eae2b7;
-  width: 270px;
-  height: 170px;
-  top:5px;
-  left:15px;
+  width: 375px;
+  height: 630px;
+
   box-shadow: -5px -5px 100px rgba(0,0,0,0.4); 
+
 }
 
 .card:before {
   content:"";
   position: absolute;
-  border:3px solid #003049;
+  border:4px solid #003049;
   border-style: dotted;
-  width: 240px;
-  heighT: 140px;
+  width: 350px;
+  height: 590px;
   left:12px;
   top:12px;
 }
@@ -623,11 +653,11 @@ animation: left 1s ease;
 .text {
   position: absolute;
   font-family: 'Brush Script MT', cursive;
-  font-size: 20px;
-  text-align: center;
-  line-height:25px;
+  font-size: 15px;
+  padding:10px;
+  line-height:20px;
   top:19px;
-  left:20px;
+  left:10px;
   color: #003049;
 }
 
@@ -637,8 +667,8 @@ animation: left 1s ease;
   height: 30px;
   margin: 0 10px;
   position: relative;
-  top: 110px;
-  left:105px;
+  top: 560px;
+  left:160px;
   transform: rotate(-45deg);
   width: 30px;
 }
@@ -699,27 +729,27 @@ animation: left 1s ease;
 }
   
 .one {
-  left:10px;
+  left:12px;
   animation: heart 1s ease-out infinite; 
 }
 
 .two {
-  left:30px;
+  left:80px;
   animation: heart 2s ease-out infinite; 
 }
 
 .three {
-  left:50px;
+  left:120px;
   animation: heart 1.5s ease-out infinite;
 }
 
 .four {
-  left:70px;
+  left:130px;
   animation: heart 2.3s ease-out infinite;
 }
 
 .five {
-  left:90px;
+  left:120px;
   animation: heart 1.7s ease-out infinite;
 }
 
@@ -736,7 +766,8 @@ animation: left 1s ease;
 
 
 .moveaS{
-  animation: aside 1s ease;
+  animation: aside 2s ease;
+  transform: translateY(-150px);
 }
 @keyframes aside {
   from{
@@ -744,6 +775,23 @@ animation: left 1s ease;
 
   }
   to{
-transform: translateY(-100px);
+transform: translateY(-150px);
+  }
+}
+
+.show-gift {
+  opacity: 1;
+  animation: showG 3s ease; /* animate upwards */
+   display: block;
+}
+
+@keyframes showG {
+  from {
+    transform: translateY(100vh); /* way below the screen */
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);     /* in its normal place */
+    opacity: 1;
   }
 }
