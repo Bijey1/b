@@ -825,4 +825,47 @@ transform: translateY(-150px);
     opacity: 1;
   }
 }
-  
+
+
+.f3 {
+  transform: rotate(90deg);
+  opacity: 0;
+}
+.last {
+  position: absolute;
+}
+.s3 {
+  opacity: 0;
+  transform: rotate(-90deg);
+}
+.comeL {
+  opacity: 1;
+  animation: comeFromLeft 1s ease forwards;
+}
+
+@keyframes comeFromLeft {
+  from {
+    left: -100vw;
+    opacity: 0;
+  }
+  to {
+    left: -15vw; /* end at natural position */
+    opacity: 1;
+  }
+}
+
+.comeR {
+  opacity: 1;
+  animation: comeFromRight 1s ease forwards;
+}
+
+@keyframes comeFromRight {
+  from {
+    right: -100vw;
+    opacity: 0;
+  }
+  to {
+    right: -15vw; /* end at natural position */
+    opacity: 1;
+  }
+}

@@ -314,35 +314,88 @@ document.querySelector(".gift").addEventListener("click", function () {
 
       containerR.addEventListener("click", handleContainerClick, { once: true });
 
-    }, 500);
+    }, 1000);
 
   }, 500);
 });
+const images = document.querySelectorAll(".last");
 
 function handleContainerClick(event) {
   event.stopPropagation(); // ⬅️ Stop click from reaching cover
-  
-  containerR.classList.remove("gr");
+  var audio = new Audio("songCut.mp3");
 
- 
+  // Wait until the audio metadata (like duration) is loaded
+  audio.addEventListener("loadedmetadata", function () {
+    audio.currentTime = 5.5; // Start at 5.5 seconds
+    audio.loop = true;
+    audio.play();
+
+    // Add entry animation class
+    setTimeout(function(){
+  images.forEach(element => {
+       if (element === "cat/dance1.gif" || element === "cat/d1.gif" || element === "cat/dance5.gif") {
+    element.classList.add("comeL"); // fixed class name
+    } else {
+     element.classList.add("comeR"); // fixed class name
+    }
+     
+    });
+    },1000)
+  
+  });
+
+  containerR.classList.remove("gr");
   containerR.classList.add("sr");
 
   // Re-enable cover clicks if needed
   cover.style.pointerEvents = "auto";
 
- setTimeout(function () {
-  containerR.style.display = "none";
-
-  containerR.classList.remove("sr");
-  
-  // Start close animation
-  cover.classList.add("close");
-  cover.classList.remove("open");
-
-  // Remove 'close' after animation ends
   setTimeout(function () {
-    cover.classList.remove("close");
-  }, 2000); // match CSS animation duration
+    containerR.style.display = "none";
+    containerR.classList.remove("sr");
 
-}, 500);
+    // Start close animation
+    cover.classList.add("close");
+    cover.classList.remove("open");
+
+    // Remove 'close' after animation ends
+    setTimeout(function () {
+      cover.classList.remove("close");
+    }, 2000); // match CSS animation duration
+
+  }, 500);
 }
+
+function danceSide() {
+  const gifs = [
+    "cat/dance1.gif",
+    "cat/dance2.gif",
+    "cat/d1.gif",
+    "cat/dance4.gif",
+    "cat/dance5.gif",
+    "cat/dance6.gif"
+  ];
+
+  for (var i = 0; i < images.length; i++) {
+    // pick gif by looping through gifs array
+    var gifIndex = i % gifs.length;
+    var gif = gifs[gifIndex];
+
+    // apply gif to image
+    images[i].src = gif;
+
+    // add top spacing
+    images[i].style.top = (i * 20) + "vh"; // adjust spacing
+
+    // add left + class for selected gifs
+    if (gif === "cat/dance1.gif" || gif === "cat/d1.gif" || gif === "cat/dance5.gif") {
+      images[i].classList.add("f3");
+      images[i].style.left = "-20vw"; // offscreen left
+    } else {
+      images[i].classList.add("s3");
+      images[i].style.right = "-15vw"; // offscreen right
+    }
+  }
+}
+
+danceSide();
