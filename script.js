@@ -286,7 +286,7 @@ const getRandomStyles = () => {
     height: ${size}px; 
     animation-duration: ${dur}s; `;
 };
-
+let pass=false;
 const createSnow = (num) => {
   const snowContainer = document.getElementById("snow-container");
   for (let i = 0; i < num; i++) {
@@ -324,11 +324,17 @@ function handleContainerClick(event) {
   event.stopPropagation(); // ⬅️ Stop click from reaching cover
   var audio = new Audio("songCut.mp3");
 
+  
   // Wait until the audio metadata (like duration) is loaded
   audio.addEventListener("loadedmetadata", function () {
+    if(pass==false){
     audio.currentTime = 5.5; // Start at 5.5 seconds
     audio.loop = true;
     audio.play();
+    }
+    pass=true;
+  
+    
 
     // Add entry animation class
     setTimeout(function(){
